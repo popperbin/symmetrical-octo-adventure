@@ -54,15 +54,4 @@ class lista:
             mensaje = "dato no encontrado"
             return mensaje
         
-    def eliminarNodo(self, dato):
-        temp = self.cabeza
-        temp2 = None
-        if temp != None and temp.obtenerCoche() == dato:
-            self.cabeza = None
-
-        while( temp != None and temp.obtenerCoche() != dato):
-            temp2 = temp
-            temp = temp.obtenerSiguiente()
-        if temp != None:
-            temp2.NodoSiguiente(temp.obtenerSiguiente())
         
