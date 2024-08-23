@@ -1,22 +1,17 @@
 from persona import persona
 class nodo(persona):
 
-    def __init__(self, persona):
-        self.valor = persona
+    def __init__(self, va):
+        self.valor = va
         self.siguiente = None
 
     def obtenerValor(self):
-        return self.valor
-    
-    def obtenerPersona(self):
+        self.valor
         return self.valor
 
     def obtenerSiguiente(self):
+        self.siguiente
         return self.siguiente
 
-    def NodoSiguiente(self, siguiente):
-        self.siguiente = siguiente
 
-    def __str__(self):
-        return f"turno: {self.valor}"
-    
+
