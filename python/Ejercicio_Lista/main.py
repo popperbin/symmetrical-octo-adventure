@@ -1,4 +1,3 @@
-import time
 from cola import cola
 from persona import persona
 
