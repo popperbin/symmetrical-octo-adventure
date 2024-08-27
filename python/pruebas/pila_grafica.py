@@ -1,6 +1,6 @@
-from nodopila import Pila
+from nodopila import Cola
 
-class pilaGrafica(Pila):
+class colaGrafica(Cola):
 
     def __init__(self, x1, y1, ancho, alto):
 

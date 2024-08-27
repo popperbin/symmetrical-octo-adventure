@@ -1,60 +1,66 @@
-class nodopila(object):
-    dato = None
-    siguiente = None 
+class nodoCola():
+    def __init__(self, dato=None):
+        self.dato = dato
+        self.siguiente = None 
 
-class Pila(object):
+class Cola():
 
     def __init__(self):
-        self.tope = None
+        self.cabeza = None
+        self.cola = None
 
     def reiniciar(self):
-        self.tope = None
+        self.cabeza = None
+        self.cola = None
 
     def insertar(self, dato):
-        nodo = nodopila()
-        nodo.dato = dato
-        nodo.siguiente = self.tope  
-        self.tope = nodo
+        nodo = nodoCola(dato)
+        if self.cola == None:
+            self.cabeza = nodo
+        else:
+            self.cola.siguiente = nodo
+        self.cola = nodo
+
 
     def quitar(self):
-        if self.tope is None:
-            raise IndexError("la pila esta vacia")
-        x = self.tope.dato  
-        eliminarNodo = self.tope
-        self.tope = self.tope.siguiente 
-        eliminarNodo.siguiente = None 
+        if self.cabeza == None:
+            raise IndexError("la cola esta vacia")
+        x = self.cabeza.dato  
+        self.cabeza = self.cabeza.siguiente
+        if self.cabeza == None:
+            self.cola = None
         return x
     
-    def pila_vacia(self):
-        return self.tope is None
+    def cola_vacia(self):
+        return self.cabeza == None
     
-    def topePila(self):
-        if self.tope is not None:
-            return self.tope.dato
+    def primerCola(self):
+        if self.cabeza != None:
+            return self.cabeza.dato
         else:
             return None
         
     def imprime(self):
-        paux = Pila()
+        paux = Cola()
         cadena = ""
-        while not self.pila_vacia():
+        while not self.cola_vacia():
             dato = self.quitar()
             cadena += str(dato) +"\n"
             paux.insertar(dato)
 
-        while not paux.pila_vacia():
+        while not paux.cola_vacia():
             dato = paux.quitar()
             self.insertar(dato)
         return cadena
     
     def elementos(self):
-        paux = Pila()
+        paux = Cola()
         cuenta = 0
-        while not self.pila_vacia():
+        while not self.cola_vacia():
             dato = self.quitar()
             paux.insertar(dato)
             cuenta += 1
 
-        while not paux.pila_vacia():
+        while not paux.cola_vacia():
             self.insertar(paux.quitar())
         return cuenta
