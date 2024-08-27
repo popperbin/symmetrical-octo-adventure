@@ -13,14 +13,16 @@ class Pila(object):
     def insertar(self, dato):
         nodo = nodopila()
         nodo.dato = dato
-        nodo.siguiente = self.tope  # type: ignore
+        nodo.siguiente = self.tope  
         self.tope = nodo
 
     def quitar(self):
-        x = self.tope.dato  # type: ignore
+        if self.tope is None:
+            raise IndexError("la pila esta vacia")
+        x = self.tope.dato  
         eliminarNodo = self.tope
-        self.tope = self.tope.siguiente # type: ignore # 
-        eliminarNodo.siguiente = None  # type: ignore
+        self.tope = self.tope.siguiente 
+        eliminarNodo.siguiente = None 
         return x
     
     def pila_vacia(self):
@@ -53,7 +55,6 @@ class Pila(object):
             paux.insertar(dato)
             cuenta += 1
 
-        while not self.pila_vacia():
-            dato = paux.quitar()
-            self.insertar(dato)
+        while not paux.pila_vacia():
+            self.insertar(paux.quitar())
         return cuenta
